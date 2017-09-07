@@ -1,0 +1,27 @@
+{% block client_data %}
+    <div class="panel-heading">
+        <i class="fa fa-user fa-fw"></i> Client data
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-8">
+                <p><i id="client-name" class="fa fa-user fa-fw"></i><a target="_blank" href="{{ crm_link }}">{{ client.name }}</a></p>
+                <p><i id="client-email"class="fa fa-envelope-o fa-fw"></i>{{ client.email }}</p>
+                <p><i id="client-phone" class="fa fa-phone fa-fw"></i>
+                    {% if client.phone is empty %}
+                        <a href="#" id="send-email">Send email</a>
+                    {% else %}
+                        {{ client.phone }} <a href="#" id="makeCall" data-phone="{{ client.phone }}" class="btn btn-xs btn-success">Call</a>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <p><i class="fa fa-wechat fa-fw"></i><a href="https://app.intercom.com/a/apps/{{ app_id }}/users/{{ client.id }}/all-conversations" target="_blank">Intercom Link</a></p>
+                <p><i class="fa fa-gears fa-fw"></i><a href="{{ crm_link }}" target="_blank">WHMCS Link</a></p>
+                <p><i class="fa fa-ticket fa-fw"></i><a href="{{ support_link }}" target="_blank">Support Tickets</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- /.panel-body -->
+{% endblock %}

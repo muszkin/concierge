@@ -1,0 +1,73 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    dashboard_host:     127.0.0.1
+    dashboard_port:     ~
+    dashboard_name:     symfony
+    dashboard_user:     root
+    dashboard_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    shpr_symbol: ~
+    shpr_segment_id: ~
+    shpr_intercom_api_key: ~
+    shpr_intercom_app_id: ~
+    shpr_admin_panel_link: ~
+    shpr_support_tickets_link: ~
+    shpr_crm_link: ~
+    shpr_api_login: ~
+    shpr_api_password: ~
+    shpr_api_secret: ~
+    shpr_api_url: ~
+    shpr_api_service: ~
+    shpr_email_template: ~
+    shpr_url: ~
+    shpr_service: ~
+    zcin_symbol: ~
+    zcin_segment_id: ~
+    zcin_intercom_api_key: ~
+    zcin_intercom_app_id: ~
+    zcin_admin_panel_link: ~
+    zcin_support_tickets_link: ~
+    zcin_crm_link: ~
+    zcin_api_login: ~
+    zcin_api_password: ~
+    zcin_api_secret: ~
+    zcin_api_url: ~
+    zcin_api_service: ~
+    zcin_email_template: ~
+    zcin_url: ~
+    zcin_service: ~
+    zctr_symbol: ~
+    zctr_segment_id: ~
+    zctr_intercom_api_key: ~
+    zctr_intercom_app_id: ~
+    zctr_admin_panel_link: ~
+    zctr_support_tickets_link: ~
+    zctr_crm_link: ~
+    zctr_api_login: ~
+    zctr_api_password: ~
+    zctr_api_secret: ~
+    zctr_api_url: ~
+    zctr_api_service: ~
+    zctr_email_template: ~
+    zctr_url: ~
+    zctr_service: ~
+    memcached.servers: ~
+    thulium_url: ~
+    thulium_login: ~
+    thulium_password: ~

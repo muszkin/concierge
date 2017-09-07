@@ -1,0 +1,21 @@
+{% extends 'HWIOAuthBundle::layout.html.twig' %}
+
+{% block hwi_oauth_content %}
+    {% if error is defined and error %}
+        <span>{{ error }}</span>
+    {% endif %}
+    {% for owner in hwi_oauth_resource_owners() %}
+    <div class="container">
+        <div class="row" style="text-align: center;padding-top: 50%;">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4 text-center">
+                <div class="social-wrap a">
+                    <a href="{{ hwi_oauth_login_url(owner) }}">
+                        <button id="googleplus">Sign in with {{ owner | trans({}, 'HWIOAuthBundle') }}</button>
+                    </a> <br />
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock hwi_oauth_content %}

@@ -1,0 +1,25 @@
+{% block not_answered_modal %}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Not answered</h4>
+    </div>
+    <div class="modal-body">
+        <p class="text-center">3 hours postpone. Next contact at:<br>
+        <p id="not-answered-date"></p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="not-answered-save">OK</button>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#not-answered-date').datetimepicker({
+                daysOfWeekDisabled: [0, 6],
+                locale: getLang(),
+                inline: true,
+                sideBySide: true,
+                defaultDate: moment().add(3, 'h')
+            });
+        });
+    </script>
+{% endblock %}

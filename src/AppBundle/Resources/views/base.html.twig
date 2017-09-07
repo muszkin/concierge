@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% if fullname is defined %}{{ fullname }} - {% endif %}Concierge</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/jquery-labelauty.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/sb-admin-2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/dashboard.css') }}?v={{ random(10000000000) }}">
+    {% include "@App/header.javascripts.html.twig" %}
+    {% block header_javascripts %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+{% endblock body %}
+{% include "@App/javascripts.html.twig" %}
+{% block javascripts %}
+{% endblock javascripts %}
+</body>
+</html>
+

@@ -1,0 +1,11 @@
+{% block concierge_notes %}
+    {% for note in notes %}
+        {% if note.note is not empty %}
+            <tr>
+                <td>{{ note.date }}</td>
+                <td>{{ note.staff }}</td>
+                <td>{{ note.note }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

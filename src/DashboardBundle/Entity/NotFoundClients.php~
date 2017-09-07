@@ -1,0 +1,68 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * NotFoundClients
+ *
+ * @ORM\Table(name="not_found_clients")
+ * @ORM\Entity
+ */
+class NotFoundClients
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="connection_id", type="string", length=32, nullable=false)
+     */
+    private $connectionId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=11, nullable=false)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=100, nullable=false)
+     */
+    private $login;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="added_phone", type="integer", nullable=false)
+     */
+    private $addedPhone = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="client_id", type="integer", nullable=true)
+     */
+    private $clientId;
+
+
+}
+

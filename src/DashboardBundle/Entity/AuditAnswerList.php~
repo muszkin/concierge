@@ -1,0 +1,50 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AuditAnswerList
+ *
+ * @ORM\Table(name="audit_answer_list", uniqueConstraints={@ORM\UniqueConstraint(name="answer_id", columns={"answer_id"})}, indexes={@ORM\Index(name="question_id", columns={"question_id"})})
+ * @ORM\Entity
+ */
+class AuditAnswerList
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="answer_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $answerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=200, nullable=false)
+     */
+    private $value;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ic_tag", type="string", length=100, nullable=false)
+     */
+    private $icTag;
+
+    /**
+     * @var \AuditQuestions
+     *
+     * @ORM\ManyToOne(targetEntity="AuditQuestions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_id", referencedColumnName="question_id")
+     * })
+     */
+    private $question;
+
+
+}
+

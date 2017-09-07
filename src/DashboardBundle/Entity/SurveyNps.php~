@@ -1,0 +1,166 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SurveyNps
+ *
+ * @ORM\Table(name="survey_nps", uniqueConstraints={@ORM\UniqueConstraint(name="hash", columns={"hash"})})
+ * @ORM\Entity
+ */
+class SurveyNps
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sid", type="integer", nullable=false)
+     */
+    private $sid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pid", type="integer", nullable=false)
+     */
+    private $pid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tid", type="integer", nullable=false)
+     */
+    private $tid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rate", type="integer", nullable=false)
+     */
+    private $rate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=64, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hash", type="string", length=128, nullable=false)
+     */
+    private $hash;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="send", type="integer", nullable=false)
+     */
+    private $send;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="send_time", type="integer", nullable=false)
+     */
+    private $sendTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vote_time", type="integer", nullable=true)
+     */
+    private $voteTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resend", type="integer", nullable=false)
+     */
+    private $resend;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resend_time", type="integer", nullable=true)
+     */
+    private $resendTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resend_vote", type="integer", nullable=true)
+     */
+    private $resendVote;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="voted", type="integer", nullable=false)
+     */
+    private $voted;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="open", type="integer", nullable=false)
+     */
+    private $open;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resend_open", type="integer", nullable=false)
+     */
+    private $resendOpen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="text", length=65535, nullable=false)
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="staffrate", type="integer", nullable=false)
+     */
+    private $staffrate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resend_rate", type="integer", nullable=true)
+     */
+    private $resendRate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resend_comment", type="text", length=65535, nullable=true)
+     */
+    private $resendComment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="resend_staffrate", type="integer", nullable=true)
+     */
+    private $resendStaffrate;
+
+
+}
+

@@ -1,0 +1,19 @@
+{% block call_list %}
+        <div id="call-list" class="panel panel-red">
+            <div class="panel-heading">
+                <i class="fa fa-list-ul fa-fw"></i> Call list for {{ app.user.fullname }} (total:{{ call_list|length }})
+                <div id="curdate"><i class="fa fa-chevron-left fa-fw"></i><span class="text-center">{{ curDate }}</span><i class="fa fa-chevron-right fa-fw"></i></div>
+            </div>
+            <div class="panel-body">
+                <div class="list-group">
+                    {% for call in call_list %}
+                        <div data-client_id="{{ call.licenseId }}" data-user_email="{{ call.email }}">
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-user fa-fw"></i>{% if call.name is null %}{{ call.email }}{% else %}{{ call.name }}{% endif %}{% if call.timeMatters == 1 %} - {{ call.nextDate|date('Y-m-d') }} {{ call.nextTime|date("H:i") }}{% endif %}
+                            </a>
+                        </div>
+                    {% endfor %}
+                 </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,333 @@
+{% extends '@App/base.html.twig' %}
+{% block body %}
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+        <div class="col-lg-6 col-md-6">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand">
+                    <div class="photo"><img src="{% if profile_picture is not null %}{{ profile_picture }}{% else %}https://ca.slack-edge.com/T02BSLGK2-U2881112N-dd8cf74ef069-48{% endif %}" width="48" height="48" style="border-radius: 50%"/></div>
+                    <div class="name">{{ fullname }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+
+            <ul class="nav navbar-top-links navbar-right">
+                <div class="col-lg-3 counter">
+                    <li class="panel">
+                        <div id="clock">{{ promotions.end }}</div>
+                    </li>
+                </div>
+                <div class="col-lg-3">
+                    <li class="package gold panel">
+                        <div class="name">Gold</div>
+                        <div class="discount">
+                            <div class="percentage">{{ promotions.percentage.gold }}%</div>
+                            <div class="price"><i class="fa {{ currency }}"></i>{{ promotions.price.gold }}</div>
+                        </div>
+
+                    </li>
+                </div>
+                <!-- /.dropdown -->
+                <div class="col-lg-3">
+                    <li class="package platinum panel">
+                        <div class="name">Platinum</div>
+                        <div class="discount">
+                            <div class="percentage">{{ promotions.percentage.platinum }}%</div>
+                            <div class="price"><i class="fa {{ currency }}"></i>{{ promotions.price.platinum }}</div>
+                        </div>
+
+                    </li>
+                </div>
+                <!-- /.dropdown -->
+                <div class="col-lg-3">
+                    <li class="package diamond panel">
+                        <div class="name">Diamond</div>
+                        <div class="discount">
+                            <div class="percentage">{{ promotions.percentage.diamond }}%</div>
+                            <div class="price"><i class="fa {{ currency }}"></i>{{ promotions.price.diamond }}</div>
+                        </div>
+
+                    </li>
+                </div>
+                <!-- /.dropdown -->
+            </ul>
+        </div>
+
+        <!-- /.navbar-top-links -->
+
+        {% include '@App/panel/sidebar.html.twig' %}
+        {% block menu %}
+        {% endblock menu %}
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row" style="padding-top:20px">
+            <div id="unassigned-list" class="col-lg-12 col-md-12">
+
+                <!-- /.panel -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3" id="call-list-data">
+
+            </div>
+            <!-- /.col-lg-3 -->
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div id="client-data" class="panel panel-info">
+
+
+                        </div>
+                        <div id="cl-licenses" class="panel panel-info">
+                            <div class="panel-heading">
+                                <i class="fa fa-user fa-fw"></i> Client's licenses
+                            </div>
+                            <div id="client-licenses" class="panel-body">
+
+                                <div class="row">
+                                    <div class="table-responsive" id="client-stores">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>License ID</th>
+                                                <th>Domain</th>
+                                                <th>Type</th>
+                                                <th>Register date</th>
+                                                <th>Status</th>
+                                                <th>Profile</th>
+                                                <th>Last concierge by</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div id="benefits" class="panel panel-green">
+                            <div class="panel-heading">
+                                <i class="fa fa-key fa-fw"></i> Benefits to mention on calls
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <p>Lorem ipsum dolor sit amet, vim utamur scribentur ei. Nam purto scripta delicata in. Alia utroque an quo. Mel te augue omittantur, unum erroribus sea et. Accusam omittam pro at. Cibo reque mel no.</p>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <div class="row">
+                    <!-- /.col-lg-3 -->
+                    <div class="col-lg-6">
+                        <div class="panel panel-primary" id="summary-box" data-license="">
+                            <div class="panel-heading">
+                                <i class="fa fa-flash fa-fw"></i> Summary for shop <a href="" target="_blank"><strong id="summary-domain">shop4115892660.myzencommerce.com</strong></a> concierge
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="row-centered cbuttons">
+                                    <div class="col-lg-12 col-centered">
+                                        <div class="action-buttons">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <button data-tip="tooltip" data-placement="top" data-original-title="Not answered" type="button" class="btn btn-default btn-circle btn-xl" data-toggle="modal" data-target="#not-answered"><i class="fa fa-times"></i></button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="not-answered" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" id="not-answered-body">
+
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                    <!-- /.modal -->
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <button data-tip="tooltip" data-placement="top" data-original-title="Concierge" type="button" class="btn btn-primary btn-circle btn-xl" data-toggle="modal" data-target="#concierge"><i class="fa fa-list"></i></button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="concierge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" id="concierge-body">
+
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                    <!-- /.modal -->
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <button data-tip="tooltip" data-placement="top" data-original-title="Postpone" type="button" class="btn btn-info btn-circle btn-xl" data-toggle="modal" data-target="#postpone-modal"><i class="fa fa-clock-o"></i></button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="postpone-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" id="postpone-body">
+
+                                                                </div>
+                                                                <!-- /.modal-content -->
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                    <!-- /.modal -->
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <button data-tip="tooltip" data-placement="top" data-original-title="Not related" type="button" class="btn btn-warning btn-circle btn-xl" data-toggle="modal" data-target="#not-related"><i class="fa fa-unlink"></i></button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="not-related" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" id="not-related-body">
+
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                    <!-- /.modal -->
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <button data-tip="tooltip" data-placement="top" data-original-title="Lost" type="button" class="btn btn-danger btn-circle btn-xl" data-toggle="modal" data-target="#lost"><i class="fa fa-thumbs-down"></i></button>
+                                                    <div class="modal fade" id="lost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" id="lost-body">
+
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <button data-tip="tooltip" data-placement="top" data-original-title="Turned Saas" type="button" class="btn btn-success btn-circle btn-xl" data-toggle="modal" data-target="#turned-saas"><i class="fa fa-heart"></i></button>
+                                                    <div class="modal fade" id="turned-saas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" id="turned-saas-body">
+
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="stacked-bar-graph" id="prospect-status">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-warning" id="last-concierge-data">
+                            <div class="panel-heading">
+                                <i class="fa fa-file-text-o fa-fw"></i> Last concierge data
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12" id="last-concierge-data-value">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="log-history" class="col-lg-12 col-md-12">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <i class="fa fa-history fa-fw"></i> Concierge log
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Agent</th>
+                                            <th>Note</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="log-history-data">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-9 -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                </div>
+            </div>
+            <!-- /.col-lg-3 -->
+
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Personal stats
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <p>Lorem ipsum dolor sit amet, vim utamur scribentur ei. Nam purto scripta delicata in. Alia utroque an quo. Mel te augue omittantur, unum erroribus sea et. Accusam omittam pro at. Cibo reque mel no.</p>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-3 -->
+
+
+            <!-- /.col-lg-3 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+{% endblock body %}

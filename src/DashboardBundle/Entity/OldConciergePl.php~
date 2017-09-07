@@ -1,0 +1,54 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OldConciergePl
+ *
+ * @ORM\Table(name="old_concierge_pl")
+ * @ORM\Entity
+ */
+class OldConciergePl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="concierge_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $conciergeId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="admin_id", type="integer", nullable=true)
+     */
+    private $adminId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="license_id", type="integer", nullable=true)
+     */
+    private $licenseId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="blob", length=65535, nullable=false)
+     */
+    private $data;
+
+
+}
+

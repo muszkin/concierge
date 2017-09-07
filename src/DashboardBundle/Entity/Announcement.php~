@@ -1,0 +1,61 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Announcement
+ *
+ * @ORM\Table(name="announcement")
+ * @ORM\Entity
+ */
+class Announcement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="team", type="string", length=10, nullable=false)
+     */
+    private $team;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=20, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=255, nullable=false)
+     */
+    private $content;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start", type="datetime", nullable=false)
+     */
+    private $start;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end", type="datetime", nullable=false)
+     */
+    private $end;
+
+
+}
+

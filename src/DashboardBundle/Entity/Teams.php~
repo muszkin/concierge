@@ -1,0 +1,47 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Teams
+ *
+ * @ORM\Table(name="teams", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"team_id"})}, indexes={@ORM\Index(name="id_2", columns={"team_id"})})
+ * @ORM\Entity
+ */
+class Teams
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="team_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $teamId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=10, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ic_key", type="string", length=255, nullable=false)
+     */
+    private $icKey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=10, nullable=false)
+     */
+    private $type;
+
+
+}
+

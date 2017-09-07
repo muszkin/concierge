@@ -1,0 +1,89 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SurveyResend
+ *
+ * @ORM\Table(name="survey_resend")
+ * @ORM\Entity
+ */
+class SurveyResend
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sid", type="integer", nullable=false)
+     */
+    private $sid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pid", type="integer", nullable=false)
+     */
+    private $pid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tid", type="integer", nullable=false)
+     */
+    private $tid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="contact", type="integer", nullable=false)
+     */
+    private $contact;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time", type="time", nullable=false)
+     */
+    private $time;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=1024, nullable=false)
+     */
+    private $link;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="text", length=65535, nullable=false)
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="send_time", type="integer", nullable=false)
+     */
+    private $sendTime;
+
+
+}
+

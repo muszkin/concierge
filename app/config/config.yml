@@ -1,0 +1,181 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: '@AppBundle/Resources/config/services.yml'}
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+
+framework:
+    #esi:             ~
+    #translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     '%database_host%'
+                port:     '%database_port%'
+                dbname:   '%database_name%'
+                user:     '%database_user%'
+                password: '%database_password%'
+                charset:  UTF8
+            dashboard:
+                driver:   pdo_mysql
+                host:     '%dashboard_host%'
+                port:     '%dashboard_port%'
+                dbname:   '%dashboard_name%'
+                user:     '%dashboard_user%'
+                password: '%dashboard_password%'
+                charset:  UTF8
+
+    orm:
+        default_entity_manager: default
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    AppBundle:  ~
+            dashboard:
+                connection: dashboard
+                mappings:
+                    DashboardBundle: ~
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+hwi_oauth:
+    firewall_names: ["secured_area"]
+    resource_owners:
+            google:
+                type:                google
+                client_id:           892453309598-svmul11slil0efiemr8166h2lfgus94u.apps.googleusercontent.com
+                client_secret:       Mj9oSW9SEvOxOpWn9QKk0Jc9
+                scope:               "email profile openid"
+                paths:
+                  email: email
+                  profile: profile
+                  openid: openid
+
+app:
+    teams:
+        shpr:
+            symbol: "%shpr_symbol%"
+            segment_id: "%shpr_segment_id%"
+            intercom_api_key: "%shpr_intercom_api_key%"
+            intercom_app_id: "%shpr_intercom_app_id%"
+            admin_panel_link: "%shpr_admin_panel_link%"
+            support_tickets_link: "%shpr_support_tickets_link%"
+            crm_link: "%shpr_crm_link%"
+            api:
+                api_login: "%shpr_api_login%"
+                api_password: "%shpr_api_password%"
+                api_secret: "%shpr_api_secret%"
+                api_url: "%shpr_api_url%"
+                api_service: "%shpr_api_service%"
+                email_template: "%shpr_email_template%"
+            promotions:
+                url: "%shpr_url%"
+                service: "%shpr_service%"
+        zcin:
+            symbol: "%zcin_symbol%"
+            segment_id: "%zcin_segment_id%"
+            intercom_api_key: "%zcin_intercom_api_key%"
+            intercom_app_id: "%zcin_intercom_app_id%"
+            admin_panel_link: "%zcin_admin_panel_link%"
+            support_tickets_link: "%zcin_support_tickets_link%"
+            crm_link: "%zcin_crm_link%"
+            api:
+                api_login: "%zcin_api_login%"
+                api_password: "%zcin_api_password%"
+                api_secret: "%zcin_api_secret%"
+                api_url: "%zcin_api_url%"
+                api_service: "%zcin_api_service%"
+                email_template: "%zcin_email_template%"
+            promotions:
+                url: "%zcin_url%"
+                service: "%zcin_service%"
+        zctr:
+            symbol: "%zctr_symbol%"
+            segment_id: "%zctr_segment_id%"
+            intercom_api_key: "%zctr_intercom_api_key%"
+            intercom_app_id: "%zctr_intercom_app_id%"
+            admin_panel_link: "%zctr_admin_panel_link%"
+            support_tickets_link: "%zctr_support_tickets_link%"
+            crm_link: "%zctr_crm_link%"
+            api:
+                api_login: "%zctr_api_login%"
+                api_password: "%zctr_api_password%"
+                api_secret: "%zctr_api_secret%"
+                api_url: "%zctr_api_url%"
+                api_service: "%zctr_api_service%"
+                email_template: "%zctr_email_template%"
+            promotions:
+                url: "%zctr_url%"
+                service: "%zctr_service%"
+
+doctrine_cache:
+    providers:
+        gearman_cache:
+            type: file_system
+            namespace: doctrine_cache.ns.gearman
+
+gearman:
+  bundles:
+    AppBundle:
+      name: AppBundle
+      active: true
+      include:
+        - Worker
+      ignore:
+        - DependencyInjection
+        - Resources
+  defaults:
+    method: doNormal
+    iterations: 150
+    callbacks: true
+    job_prefix: bulk
+    generate_unique_key: true
+    workers_name_prepend_namespace: true
+  servers:
+    localhost:
+      host: 127.0.0.1
+      port: 4730

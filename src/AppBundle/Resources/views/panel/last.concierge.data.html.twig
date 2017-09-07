@@ -1,0 +1,17 @@
+{% block last_concierge_data %}
+    {% if concierge.persona is empty
+    and concierge.amount_of_goods is empty
+    and concierge.when_to_start is empty
+    and concierge.industry is empty
+    and concierge.how_much_time_spend is empty
+    and concierge.what_to_wait is empty %}
+        <p style="text-align: center">No data</p>
+    {% else %}
+        <p><i class="fa fa-user fa-fw"></i> Persona | <strong id="persona">{{ concierge.persona }}</strong></p>
+        <p><i class="fa fa-ticket fa-fw"></i> Amount of goods | <strong id="amount">{{ concierge.amount_of_goods }}</strong></p>
+        <p><i class="fa fa-calendar fa-fw"></i> When to start | <strong id="whentostart">{{ concierge.when_to_start }}</strong></p>
+        <p><i class="fa fa-suitcase fa-fw"></i> Industry | <strong id="industry">{{ concierge.industry }}</strong></p>
+        <p><i class="fa fa-clock-o fa-fw"></i> How much time spend | <strong id="howmuchtime">{{ concierge.how_much_time_spend }}</strong></p>
+        <p><i class="fa fa-thumbs-up fa-fw"></i> What to wait | <strong id="whattowait">{{ concierge.what_to_wait }}</strong></p>
+    {% endif %}
+{% endblock last_concierge_data %}

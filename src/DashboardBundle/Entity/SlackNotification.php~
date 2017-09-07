@@ -1,0 +1,75 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SlackNotification
+ *
+ * @ORM\Table(name="slack_notification")
+ * @ORM\Entity
+ */
+class SlackNotification
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="agent_login", type="string", length=50, nullable=false)
+     */
+    private $agentLogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=10, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="waiting", type="integer", nullable=true)
+     */
+    private $waiting;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="available", type="integer", nullable=false)
+     */
+    private $available;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="turn_on", type="integer", nullable=false)
+     */
+    private $turnOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="turn_time", type="datetime", nullable=true)
+     */
+    private $turnTime;
+
+
+}
+

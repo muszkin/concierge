@@ -1,0 +1,56 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ConciergeAnswers
+ *
+ * @ORM\Table(name="concierge_answers", indexes={@ORM\Index(name="answer_id", columns={"answer_id"}), @ORM\Index(name="question_id", columns={"question_id"}), @ORM\Index(name="concierge_id", columns={"concierge_id"})})
+ * @ORM\Entity
+ */
+class ConciergeAnswers
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="concierge_answers_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $conciergeAnswersId;
+
+    /**
+     * @var \ConciergeAnswerList
+     *
+     * @ORM\ManyToOne(targetEntity="ConciergeAnswerList")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="answer_id", referencedColumnName="answer_id")
+     * })
+     */
+    private $answer;
+
+    /**
+     * @var \ConciergeQuestions
+     *
+     * @ORM\ManyToOne(targetEntity="ConciergeQuestions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_id", referencedColumnName="question_id")
+     * })
+     */
+    private $question;
+
+    /**
+     * @var \Concierge
+     *
+     * @ORM\ManyToOne(targetEntity="Concierge")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="concierge_id", referencedColumnName="concierge_id")
+     * })
+     */
+    private $concierge;
+
+
+}
+

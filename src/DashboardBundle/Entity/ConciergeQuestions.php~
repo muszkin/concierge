@@ -1,0 +1,71 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ConciergeQuestions
+ *
+ * @ORM\Table(name="concierge_questions", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"question_id"})}, indexes={@ORM\Index(name="team_id", columns={"team_id"})})
+ * @ORM\Entity
+ */
+class ConciergeQuestions
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="question_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $questionId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="entry", type="integer", nullable=false)
+     */
+    private $entry;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=100, nullable=false)
+     */
+    private $value;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=20, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="column_name", type="string", length=20, nullable=true)
+     */
+    private $columnName;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="link", type="boolean", nullable=false)
+     */
+    private $link = '0';
+
+    /**
+     * @var \Teams
+     *
+     * @ORM\ManyToOne(targetEntity="Teams")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="team_id", referencedColumnName="team_id")
+     * })
+     */
+    private $team;
+
+
+}
+

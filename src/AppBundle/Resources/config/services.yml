@@ -1,0 +1,55 @@
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  dashboard.api:
+    class: AppBundle\Services\Remote\DashboardApi
+  whmcs.api:
+    class: AppBundle\Services\Remote\Whmcs
+  promotions:
+    class: AppBundle\Services\Promotions
+  intercom.api:
+    class: AppBundle\Services\Remote\Intercom
+    arguments: ["@app.current.user.provider",'@service_container']
+  dashboard.service:
+    class: DashboardBundle\Services\Dashboard
+    arguments: ["@doctrine.orm.dashboard_entity_manager"]
+  app.google.user.provider:
+    class: AppBundle\Security\AppGoogleUserProvider
+    arguments: ["@doctrine.orm.default_entity_manager",AppBundle\Entity\User]
+  shoper.api:
+    class: AppBundle\Services\Remote\Shoper
+  app.current.user.provider:
+    class: AppBundle\Services\Provider\CurrentUserProvider
+    arguments: ["@security.token_storage"]
+  app.concierge.provider:
+    class: AppBundle\Services\Provider\ConciergeProvider
+    arguments: ["@doctrine.orm.dashboard_entity_manager","@doctrine.cache.memcached"]
+  app.export.csv:
+    class: AppBundle\Services\Export\CsvExporter
+    arguments: ["@app.concierge.provider"]
+  app.export.array:
+    class: AppBundle\Services\Export\ArrayExporter
+    arguments: ["@app.concierge.provider"]
+  app.client.status:
+    class: AppBundle\Services\Local\ClientStatus
+    arguments: ["@doctrine.orm.default_entity_manager"]
+  memcached:
+      class: Memcached
+      calls:
+        - ["addServers", ["%memcached.servers%"]]
+  doctrine.cache.memcached:
+      class: Doctrine\Common\Cache\MemcachedCache
+      calls:
+        - [ "setMemcached", ["@memcached"] ]
+  app.no.concierge.worker:
+    class: AppBundle\Worker\NoConciergeWorker
+    arguments: ["@doctrine.orm.default_entity_manager","@doctrine.orm.dashboard_entity_manager","@intercom.api","@service_container","@logger","@doctrine.cache.memcached","@dashboard.service"]
+  app.thulium.service:
+    class: AppBundle\Services\Remote\Thulium
+    arguments: ["%thulium_url%","%thulium_login%","%thulium_password%"]
+  app.concierge.note.listener:
+    class: AppBundle\EventListener\ConciergeNoteListener
+    arguments: ["@service_container","%app.teams%"]
+    tags:
+      - {name: doctrine.event_listener, event: postPersist}

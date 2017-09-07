@@ -1,0 +1,120 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Concierge
+ *
+ * @ORM\Table(name="concierge", uniqueConstraints={@ORM\UniqueConstraint(name="concierge_id", columns={"concierge_id"})}, indexes={@ORM\Index(name="team_id", columns={"team_id"})})
+ * @ORM\Entity
+ */
+class Concierge
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="concierge_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $conciergeId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="crm_link", type="string", length=100, nullable=true)
+     */
+    private $crmLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="domain", type="string", length=30, nullable=true)
+     */
+    private $domain;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="license_id", type="integer", nullable=false)
+     */
+    private $licenseId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=20, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="next_date", type="date", nullable=true)
+     */
+    private $nextDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="next_time", type="time", nullable=true)
+     */
+    private $nextTime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="note", type="string", length=2000, nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="task", type="string", length=1000, nullable=true)
+     */
+    private $task;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_id", type="integer", nullable=true)
+     */
+    private $orderId;
+
+    /**
+     * @var \Teams
+     *
+     * @ORM\ManyToOne(targetEntity="Teams")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="team_id", referencedColumnName="team_id")
+     * })
+     */
+    private $team;
+
+
+}
+

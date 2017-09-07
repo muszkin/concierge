@@ -1,0 +1,111 @@
+{% block concierge_modal %}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Concierge</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Benefits to mention on calls</h4>
+                <blockquote>
+                    <p></p>
+                </blockquote>
+            </div>
+        </div>
+        <form role="form" name="concierge" id="concierge-form" action="" method="POST">
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <div class="form-group">
+                        <input name="license_id" class="form-control" placeholder="License ID" value="{{ concierge_data.license_id }}">
+                    </div>
+                    <div class="form-group">
+                        <input name="domain" class="form-control" placeholder="Domain" value="{{ concierge_data.domain }}">
+                    </div>
+                    <div class="form-group">
+                        <input name="crm_link" class="form-control" placeholder="CRM Link" value="{{ concierge_data.crm_link }}">
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="form-group">
+                        <input name="name" class="form-control" placeholder="Name" value="{{ concierge_data.name }}">
+                    </div>
+                    <div class="form-group">
+                        <input name="email" class="form-control" placeholder="Email" value="{{ concierge_data.email }}">
+                    </div>
+                    <div class="form-group">
+                        <input name="phone" class="form-control" placeholder="Phone" value="{{ concierge_data.phone }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="note">Note:</label>
+                    <textarea class="form-control" name="note" id="note"></textarea>
+                </div>
+                <div class="col-xs-6">
+                    <label for="task">Task:</label>
+                    <textarea class="form-control" name="task" id="task"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="concierge-date"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="time-matters">Time matters</label>
+                    <input class="form-control" type="checkbox" name="time-matters" id="time-matters">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="single-questions">
+                        {% for question in questions if question.type == 'single' %}
+                            <div class="tag-box">
+                                <span class="btn btn-outline btn-success btn-xs qname">{{ question.value }}</span>
+                                {% for answer in question.answers %}
+                                    <input data-labelauty="{{ answer.value }}" type="checkbox" value="{{ answer.answer_id }}" name="{{ question.question_id }}" {% if answer.set is defined and answer.set == true %}checked="checked"{% endif %}>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="multi-questions">
+                        {% for question in questions if question.type == 'multi' %}
+                            <div class="tag-box">
+                                <span class="btn btn-outline btn-success btn-xs qname">{{ question.value }}</span>
+                                {% for tag in question.answers %}
+                                    <input data-labelauty="{{ tag.value }}" type="checkbox" value="{{ tag.tag_id }}" name="{{ question.question_id }}[]" {% if tag.set is defined and tag.set == true %}checked="checked"{% endif %}>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save-concierge">OK</button>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#concierge-date').datetimepicker({
+                daysOfWeekDisabled: [0, 6],
+                locale: getLang(),
+                inline: true,
+                sideBySide: true
+            });
+        });
+    </script>
+
+{% endblock concierge_modal %}

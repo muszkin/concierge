@@ -1,0 +1,138 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CallIncoming
+ *
+ * @ORM\Table(name="call_incoming")
+ * @ORM\Entity
+ */
+class CallIncoming
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="action", type="string", length=20, nullable=false)
+     */
+    private $action;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="connection_id", type="string", length=20, nullable=false)
+     */
+    private $connectionId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="queue_id", type="integer", nullable=false)
+     */
+    private $queueId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="agent_login", type="string", length=50, nullable=true)
+     */
+    private $agentLogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="source_number", type="string", length=30, nullable=false)
+     */
+    private $sourceNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destination_number", type="string", length=30, nullable=true)
+     */
+    private $destinationNumber;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duration", type="integer", nullable=true)
+     */
+    private $duration;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="billsec", type="integer", nullable=true)
+     */
+    private $billsec;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="filename", type="string", length=100, nullable=true)
+     */
+    private $filename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="record_id", type="string", length=255, nullable=true)
+     */
+    private $recordId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="phone_number", type="integer", nullable=true)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="system_status", type="string", length=255, nullable=true)
+     */
+    private $systemStatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status_id", type="integer", nullable=true)
+     */
+    private $statusId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="customer_id", type="integer", nullable=true)
+     */
+    private $customerId;
+
+
+}
+

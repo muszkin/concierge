@@ -1,0 +1,7 @@
+{% block statuses %}
+    {% for status in statuses %}
+        {% if status.status is not empty %}
+            <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{ status.date }} | {{ status.staff }}" class="{{ status.status | lower }}" style="{{ percent }}">{{ status.status }}</span>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

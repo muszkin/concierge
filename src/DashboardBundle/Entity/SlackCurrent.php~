@@ -1,0 +1,75 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SlackCurrent
+ *
+ * @ORM\Table(name="slack_current")
+ * @ORM\Entity
+ */
+class SlackCurrent
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="send_date", type="integer", nullable=false)
+     */
+    private $sendDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="channel", type="string", length=10, nullable=false)
+     */
+    private $channel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="waiting", type="integer", nullable=false)
+     */
+    private $waiting;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=10, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="send", type="integer", nullable=false)
+     */
+    private $send;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="turnon", type="integer", nullable=false)
+     */
+    private $turnon;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="turn_date", type="integer", nullable=true)
+     */
+    private $turnDate;
+
+
+}
+

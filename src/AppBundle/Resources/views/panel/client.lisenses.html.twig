@@ -1,0 +1,13 @@
+{% block client_licenses %}
+    {% for license in licenses %}
+        <tr data-license="{{ license.license_id.int }}" data-domain="{{ license.domain }}" data-crm-client-id="{{ license.crm_client_id }}" data-crm-license-id="{{ license.crm_license_id }}" class="{% if license.domain is empty %}disable{% endif %}">
+            <td>{{ license.license_id.int }}</td>
+            <td>{{ license.domain }}</td>
+            <td>{{ license.type }}</td>
+            <td>{{ license.signed_up }}</td>
+            <td>{{ license.status }}</td>
+            <td>{% if license.domain is not empty %}{{ license.prospect_status }}{% endif %}</td>
+            <td>{% if license.domain is not empty %}{{ license.staff }}{% endif %}</td>
+        </tr>
+    {% endfor %}
+{% endblock client_licenses %}

@@ -1,0 +1,57 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Audits
+ *
+ * @ORM\Table(name="audits", uniqueConstraints={@ORM\UniqueConstraint(name="audit_id", columns={"audit_id"})}, indexes={@ORM\Index(name="team_id", columns={"team_id"})})
+ * @ORM\Entity
+ */
+class Audits
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="audit_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $auditId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="license_id", type="integer", nullable=false)
+     */
+    private $licenseId;
+
+    /**
+     * @var \Teams
+     *
+     * @ORM\ManyToOne(targetEntity="Teams")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="team_id", referencedColumnName="team_id")
+     * })
+     */
+    private $team;
+
+
+}
+

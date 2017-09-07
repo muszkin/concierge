@@ -1,0 +1,103 @@
+<?php
+
+namespace DashboardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CallOutgoing
+ *
+ * @ORM\Table(name="call_outgoing", indexes={@ORM\Index(name="connection_id", columns={"connection_id"}), @ORM\Index(name="dst", columns={"dst"}), @ORM\Index(name="id", columns={"id"})})
+ * @ORM\Entity
+ */
+class CallOutgoing
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="src", type="string", length=30, nullable=false)
+     */
+    private $src;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dst", type="string", length=30, nullable=false)
+     */
+    private $dst;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="disposition", type="string", length=20, nullable=false)
+     */
+    private $disposition;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duration", type="integer", nullable=false)
+     */
+    private $duration;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="billsec", type="integer", nullable=false)
+     */
+    private $billsec;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="operator", type="string", length=30, nullable=false)
+     */
+    private $operator;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="filename", type="string", length=100, nullable=false)
+     */
+    private $filename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user", type="string", length=50, nullable=false)
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="connection_id", type="string", length=20, nullable=false)
+     */
+    private $connectionId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
+     */
+    private $type;
+
+
+}
+

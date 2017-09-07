@@ -1,0 +1,40 @@
+{% block no_concierge %}
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <i class="fa fa-play-circle fa-fw"></i> New trial without concierge (based on IC) (total: {{ licenses|length }})
+            <a href="#" id="refresh-no-concierge-list-soft" class="btn btn-info">Refresh list</a>
+            <a href="#" id="refresh-no-concierge-list-hard" class="btn btn-danger">Refresh list with clearing cache</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Sign-Up Date</th>
+                        <th>License ID</th>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody class="body-scrollable" id="no-concierge">
+                    {% for list in licenses %}
+                        <tr data-client_id="{{ list.0.license_id }}" data-user_email="{{ list.0.email }}" class="list-group-concierge">
+                            <td>{{ list.0.created_at }}</td>
+                            <td>{{ list.0.license_id }}</td>
+                            <td>{{ list.0.type }}</td>
+                            <td>{{ list.0.name }}</td>
+                            <td>{{ list.0.email }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+
+{% endblock no_concierge %}
